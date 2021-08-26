@@ -15,4 +15,8 @@ public class RestaurantService {
         }
         return list;
     }
+    public Restaurant getRestaurantByID(String id){
+        Restaurant restaurant = new RestaurantDAO().getRestaurantByID(id);
+        return restaurant;
+    }
 }

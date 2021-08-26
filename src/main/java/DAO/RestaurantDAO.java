@@ -3,21 +3,28 @@ package DAO;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 import restaurant.Restaurant;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.mongodb.client.model.Filters.eq;
+
 public class RestaurantDAO extends AbsDAO{
     public List<Restaurant> getRestaurant(int limit) {
-        MongoCollection<Document> movies = getDB().getCollection("restaurants");
+        MongoCollection<Document> restaurant = getDB().getCollection("restaurants");
         List<Restaurant> list = new ArrayList<>();
-        movies.find().limit(limit).forEach(d -> list.add(docToRestaurant(d)));
+        restaurant.find().limit(limit).forEach(d -> list.add(docToRestaurant(d)));
         return list;
     }
 
-
+    public Restaurant getRestaurantByID(String id) {
+        MongoCollection<Document> Restaurant = getDB().getCollection("restaurants");
+        Document restaurant = Restaurant.find(eq("_id", new ObjectId(id))).first();
+        return docToRestaurant(restaurant);
+    }
 
 
 
