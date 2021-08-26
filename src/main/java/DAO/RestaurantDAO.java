@@ -1,5 +1,7 @@
 package DAO;
 
+import com.mongodb.client.AggregateIterable;
+import com.mongodb.client.DistinctIterable;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -8,6 +10,7 @@ import restaurant.Restaurant;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static com.mongodb.client.model.Filters.eq;
@@ -26,7 +29,20 @@ public class RestaurantDAO extends AbsDAO{
         return docToRestaurant(restaurant);
     }
 
+    public DistinctIterable<String> getRestaurants() {
+        MongoCollection<Document> restaurants = getDB().getCollection("restaurants");
+        DistinctIterable<String> field = restaurants.distinct("cuisine", String.class);
+        return field;
+    }
 
+    public AggregateIterable<Document> getTopRestaurants(int limit) {
+        MongoCollection<Document> restaurants = getDB().getCollection("restaurants");
+        AggregateIterable<Document> result = restaurants.aggregate(Arrays.asList(new Document("$unwind", "$cuisine"),
+                new Document("$group", new Document("_id", "$cuisine").append("numOfRestaurants",new Document("$sum", 1L))),
+                new Document("$sort", new Document("numOfRestaurants", -1L)),
+                new Document("$limit",limit)));
+        return result;
+    }
 
     private Restaurant docToRestaurant(Bson bson) {
         Restaurant restaurant = new Restaurant();

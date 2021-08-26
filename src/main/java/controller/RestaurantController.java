@@ -1,5 +1,6 @@
 package controller;
 
+import com.mongodb.client.DistinctIterable;
 import org.thymeleaf.ITemplateEngine;
 import org.thymeleaf.context.WebContext;
 import restaurant.Restaurant;
@@ -17,6 +18,8 @@ public class RestaurantController  implements IController{
         String id = request.getParameter("id");
         Restaurant restaurant = new RestaurantService().getRestaurantByID(id);
         ctx.setVariable("restaurant", restaurant);
+        DistinctIterable<String> rtr = new RestaurantService().getRestaurants();
+        ctx.setVariable("rtr", rtr);
         templateEngine.process("restaurant", ctx, response.getWriter());
     }
 }

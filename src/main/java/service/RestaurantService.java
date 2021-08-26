@@ -1,6 +1,7 @@
 package service;
 
 import DAO.RestaurantDAO;
+import com.mongodb.client.DistinctIterable;
 import restaurant.Restaurant;
 
 import java.util.ArrayList;
@@ -18,5 +19,15 @@ public class RestaurantService {
     public Restaurant getRestaurantByID(String id){
         Restaurant restaurant = new RestaurantDAO().getRestaurantByID(id);
         return restaurant;
+    }
+    public DistinctIterable<String> getRestaurants() {
+        DistinctIterable<String> list = new RestaurantDAO().getRestaurants();
+        return list;
+    }
+
+    public List<String> getRestaurantsforHeader() {
+        ArrayList<String> list = new ArrayList<>();
+        new RestaurantDAO().getTopRestaurants(15).forEach(d -> list.add(d.getString("_id")));
+        return list;
     }
 }
