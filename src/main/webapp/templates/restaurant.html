@@ -11,9 +11,14 @@
           crossorigin="anonymous">
     <link th:href="@{/css/main.css}" href="../static/css/main.css" rel="stylesheet">
     <title th:text="${restaurant.getName()}">Hello, world!</title>
-
+<style>
+    body{
+        background-color: grey;
+    }
+</style>
 </head>
 <body>
+<marquee bgcolor="#99FF99" direction="right" loop="infinite">WELCOME TO VISIT MY PAGE </marquee>
 
 <header th:insert="~{fragments/header::navbar}">
 </header>
