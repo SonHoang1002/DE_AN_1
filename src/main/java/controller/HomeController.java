@@ -16,9 +16,30 @@ public class HomeController implements IController {
     public void process(final HttpServletRequest request, final HttpServletResponse response, final ServletContext servletContext, final ITemplateEngine templateEngine) throws Exception {
         WebContext ctx = new WebContext(request, response, servletContext, request.getLocale());
         List<Restaurant> list = new RestaurantService().getRestaurantforHomePage();
-        DistinctIterable<String> rtr = new RestaurantService().getRestaurants();
-        ctx.setVariable("rtr", rtr);
+        List<String> cuisines = new RestaurantService().getCuisinesforHeader();
+        ctx.setVariable("cuisines", cuisines);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         ctx.setVariable("list", list);
         templateEngine.process("index", ctx, response.getWriter());
+
+
+
+
     }
 }

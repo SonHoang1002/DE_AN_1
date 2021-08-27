@@ -29,10 +29,10 @@ public class RestaurantDAO extends AbsDAO{
         return docToRestaurant(restaurant);
     }
 
-    public DistinctIterable<String> getRestaurants() {
+    public DistinctIterable<String> getCuisines() {
         MongoCollection<Document> restaurants = getDB().getCollection("restaurants");
-        DistinctIterable<String> field = restaurants.distinct("cuisine", String.class);
-        return field;
+        DistinctIterable<String> cuisine = restaurants.distinct("cuisine", String.class);
+        return cuisine;
     }
 
     public AggregateIterable<Document> getTopRestaurants(int limit) {

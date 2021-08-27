@@ -20,12 +20,12 @@ public class RestaurantService {
         Restaurant restaurant = new RestaurantDAO().getRestaurantByID(id);
         return restaurant;
     }
-    public DistinctIterable<String> getRestaurants() {
-        DistinctIterable<String> list = new RestaurantDAO().getRestaurants();
+    public DistinctIterable<String> getCuisines() {
+        DistinctIterable<String> list = new RestaurantDAO().getCuisines();
         return list;
     }
 
-    public List<String> getRestaurantsforHeader() {
+    public List<String> getCuisinesforHeader() {
         ArrayList<String> list = new ArrayList<>();
         new RestaurantDAO().getTopRestaurants(15).forEach(d -> list.add(d.getString("_id")));
         return list;

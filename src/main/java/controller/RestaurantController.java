@@ -18,8 +18,8 @@ public class RestaurantController  implements IController{
         String id = request.getParameter("id");
         Restaurant restaurant = new RestaurantService().getRestaurantByID(id);
         ctx.setVariable("restaurant", restaurant);
-        DistinctIterable<String> rtr = new RestaurantService().getRestaurants();
-        ctx.setVariable("rtr", rtr);
+        DistinctIterable<String> cuisines = new RestaurantService().getCuisines();
+        ctx.setVariable("cuisines", cuisines);
         templateEngine.process("restaurant", ctx, response.getWriter());
     }
 }
