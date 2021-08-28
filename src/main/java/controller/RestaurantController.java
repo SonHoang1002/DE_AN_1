@@ -9,6 +9,7 @@ import service.RestaurantService;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 public class RestaurantController  implements IController{
 
@@ -18,8 +19,8 @@ public class RestaurantController  implements IController{
         String id = request.getParameter("id");
         Restaurant restaurant = new RestaurantService().getRestaurantByID(id);
         ctx.setVariable("restaurant", restaurant);
-        DistinctIterable<String> cuisines = new RestaurantService().getCuisines();
-        ctx.setVariable("cuisines", cuisines);
+        List<String> cuisine = new RestaurantService().getCuisinesforHeader();
+        ctx.setVariable("cuisine", cuisine);
         templateEngine.process("restaurant", ctx, response.getWriter());
     }
 }

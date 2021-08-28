@@ -17,8 +17,8 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Top List
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" th:each="cui : ${cuisines}">
-                        <li th:each="cui : ${cuisines}"><a class="dropdown-item" href="#"><span th:text="${cui}"></span></a></li>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" th:with="cui=#{cuisine}">
+                        <li th:each="cui:${#strings.arraySplit(cuisine,',')}"><a class="dropdown-item" th:href="@{/(by='cuisine',value=${cui})}"><span th:text="${cui}"></span></a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -73,7 +73,7 @@
     <div class="bg-light text-center text-lg-start mt-5" >
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            Copyright @ 2021 . All right reververd
+            Copyright @ 2021 . All right reserved
             <a class="text-dark" href="https://www.conradmaldives.com/dine/ithaa-undersea-restaurant/"><p style="font-size: 30px;">Restaurant</p></a>
         </div>
         <!-- Copyright -->

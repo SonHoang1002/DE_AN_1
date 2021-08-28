@@ -8,6 +8,7 @@ import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import restaurant.Restaurant;
 
+import javax.print.Doc;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -55,4 +56,11 @@ public class RestaurantDAO extends AbsDAO{
         restaurant.setGrades((List<String>) document.get("grades"));
         return restaurant;
     }
+    public List<Restaurant> searchRestaurants(Document filter, Document sort, int limit, int skip) {
+        MongoCollection<Document> restaurant = getDB().getCollection("restaurants");
+        List<Restaurant> list = new ArrayList<>();
+        restaurant.find(filter).sort(sort).limit(limit).skip(skip).forEach(d -> list.add(docToRestaurant(d)));
+        return list;
+    }
+
 }
