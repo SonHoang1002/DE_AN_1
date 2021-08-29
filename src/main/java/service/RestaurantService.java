@@ -46,4 +46,12 @@ public class RestaurantService {
         }
         return list;
     }
+
+    public long getTotalPages(String by, String value) {
+        Document filter = new Document();
+        if (by != null && value != null)
+            filter.append(by, value);
+        long totalRestaurants = new RestaurantDAO().getRestaurantsNumber(filter);
+        return (long) Math.ceil((float) totalRestaurants / NUM_OF_RESTAURANT_ON_PAGE);
+    }
 }

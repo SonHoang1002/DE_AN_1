@@ -30,13 +30,17 @@ public class HomeController implements IController {
         }
         ctx.setVariable("url", url);  //For paging
 
-        int page = 0;
+        long totalPages = new RestaurantService().getTotalPages(by, value);
+        ctx.setVariable("totalPages", totalPages);
+
+
+        int page = 1;
         if (request.getParameter("page") != null)
             page = Integer.parseInt(request.getParameter("page").trim());
+        ctx.setVariable("page", page);
+
+
         List<Restaurant> list = new RestaurantService().searchRestaurants(by, value, page);
-
-
-
 
         ctx.setVariable("list", list);
         List<String> cuisine = new RestaurantService().getCuisinesforHeader();
