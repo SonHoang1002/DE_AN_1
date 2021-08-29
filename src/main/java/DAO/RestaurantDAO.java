@@ -23,6 +23,19 @@ public class RestaurantDAO extends AbsDAO{
         restaurant.find().limit(limit).forEach(d -> list.add(docToRestaurant(d)));
         return list;
     }
+    private Restaurant docToRestaurant(Bson bson) {
+        Restaurant restaurant = new Restaurant();
+        Document document = (Document) bson;
+        restaurant.set_id(document.getObjectId("_id").toHexString());
+        restaurant.setBorough(document.getString("borough"));
+        restaurant.setCuisine(document.getString("cuisine"));
+        restaurant.setPoster1(document.getString("poster1"));
+        restaurant.setPoster2(document.getString("poster2"));
+        restaurant.setName(MessageFormat.format("{0}", document.get("name")));
+        restaurant.setRestaurant_id(document.getString("restaurant_id"));
+        restaurant.setGrades((List<String>) document.get("grades"));
+        return restaurant;
+    }
 
     public Restaurant getRestaurantByID(String id) {
         MongoCollection<Document> Restaurant = getDB().getCollection("restaurants");
@@ -30,7 +43,7 @@ public class RestaurantDAO extends AbsDAO{
         return docToRestaurant(restaurant);
     }
 
-    public DistinctIterable<String> getCuisines() {
+    public DistinctIterable<String> getCuisine() {
         MongoCollection<Document> restaurants = getDB().getCollection("restaurants");
         DistinctIterable<String> cuisine = restaurants.distinct("cuisine", String.class);
         return cuisine;
@@ -45,19 +58,7 @@ public class RestaurantDAO extends AbsDAO{
         return result;
     }
 
-    private Restaurant docToRestaurant(Bson bson) {
-        Restaurant restaurant = new Restaurant();
-        Document document = (Document) bson;
-        restaurant.set_id(document.getObjectId("_id").toHexString());
-        restaurant.setBorough(document.getString("borough"));
-        restaurant.setCuisine(document.getString("cuisine"));
-        restaurant.setPoster1(document.getString("poster1"));
-        restaurant.setPoster2(document.getString("poster2"));
-        restaurant.setName(MessageFormat.format("{0}", document.get("name")));
-        restaurant.setRestaurant_id(document.getString("restaurant_id"));
-        restaurant.setGrades((List<String>) document.get("grades"));
-        return restaurant;
-    }
+
     public List<Restaurant> searchRestaurants(Document filter, Document sort, int limit, int skip) {
         MongoCollection<Document> restaurant = getDB().getCollection("restaurants");
         List<Restaurant> list = new ArrayList<>();

@@ -35,6 +35,9 @@ public class HomeController implements IController {
             page = Integer.parseInt(request.getParameter("page").trim());
         List<Restaurant> list = new RestaurantService().searchRestaurants(by, value, page);
 
+
+
+
         ctx.setVariable("list", list);
         List<String> cuisine = new RestaurantService().getCuisinesforHeader();
         ctx.setVariable("cuisine", cuisine);
