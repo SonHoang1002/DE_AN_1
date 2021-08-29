@@ -51,6 +51,8 @@ public class RestaurantDAO extends AbsDAO{
         restaurant.set_id(document.getObjectId("_id").toHexString());
         restaurant.setBorough(document.getString("borough"));
         restaurant.setCuisine(document.getString("cuisine"));
+        restaurant.setPoster1(document.getString("poster1"));
+        restaurant.setPoster2(document.getString("poster2"));
         restaurant.setName(MessageFormat.format("{0}", document.get("name")));
         restaurant.setRestaurant_id(document.getString("restaurant_id"));
         restaurant.setGrades((List<String>) document.get("grades"));

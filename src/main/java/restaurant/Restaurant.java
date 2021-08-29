@@ -12,4 +12,7 @@ public class Restaurant {
     private List<String> grades;
     private String name;
     private String restaurant_id;
+    private String poster1;
+    private String poster2;
+
 }

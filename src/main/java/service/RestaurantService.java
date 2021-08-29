@@ -32,7 +32,7 @@ public class RestaurantService {
         return list;
     }
 
-    final static int NUM_OF_RESTAURANT_ON_PAGE = 12;
+    final static int NUM_OF_RESTAURANT_ON_PAGE = 60;
     public List<Restaurant> searchRestaurants(String by, String value, int page) {
         Document filter = new Document();
         Document sort = new Document("restaurant_id", -1);

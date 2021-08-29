@@ -24,6 +24,10 @@
     RESTAURANT NAME: <h1 th:text="${restaurant.getName()}"></h1>
     RESTAURANT CUISINE:<h5 th:text="${restaurant.getCuisine()}"></h5>
     RESTAURANT BOROUGH: <h5 th:text="${restaurant.getBorough()}"></h5>
+    IMAGES:<br>
+    <img th:src="${restaurant.getPoster1()}" style="height:500px;width: 600px">
+    <img th:src="${restaurant.getPoster2()}" style="height:500px;width: 600px">
+
 </main>
 
 
