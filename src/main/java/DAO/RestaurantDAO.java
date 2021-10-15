@@ -29,6 +29,7 @@ public class RestaurantDAO extends AbsDAO{
         restaurant.set_id(document.getObjectId("_id").toHexString());
         restaurant.setBorough(document.getString("borough"));
         restaurant.setCuisine(document.getString("cuisine"));
+        restaurant.setRate(document.getString("rate"));
         restaurant.setPoster1(document.getString("poster1"));
         restaurant.setPoster2(document.getString("poster2"));
         restaurant.setName(MessageFormat.format("{0}", document.get("name")));
@@ -67,8 +68,8 @@ public class RestaurantDAO extends AbsDAO{
     }
 
     public long getRestaurantsNumber(Document filter) {
-        MongoCollection<Document> restaurants = getDB().getCollection("restaurants");
-        return restaurants.countDocuments(filter);
+        MongoCollection<Document> restaurant = getDB().getCollection("restaurants");
+        return restaurant.countDocuments(filter);
 
     }
 

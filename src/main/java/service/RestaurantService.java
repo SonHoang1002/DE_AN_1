@@ -31,13 +31,17 @@ public class RestaurantService {
         new RestaurantDAO().getTopRestaurants(20).forEach(d -> list.add(d.getString("_id")));
         return list;
     }
-
     final static int NUM_OF_RESTAURANT_ON_PAGE = 12;
-    public List<Restaurant> searchRestaurants(String by, String value, int page) {
+    public List<Restaurant> searchRestaurants(String by, String value, int page,String text) {
         Document filter = new Document();
-        Document sort = new Document("restaurant_id", -1);
+        Document sort = new Document();
         if (by != null && value != null)
             filter.append(by, value);
+        if (text != null)
+            filter.append("$text", new Document("$search", text));
+        else{
+            sort.append("restaurant_id", -1);
+        }
 
         List<Restaurant> list = new RestaurantDAO().searchRestaurants(filter, sort, NUM_OF_RESTAURANT_ON_PAGE, (page - 1) * NUM_OF_RESTAURANT_ON_PAGE);
         if (list == null) {
@@ -47,11 +51,17 @@ public class RestaurantService {
         return list;
     }
 
-    public long getTotalPages(String by, String value) {
+
+    public long getTotalPages(String by, String value, String text) {
         Document filter = new Document();
         if (by != null && value != null)
             filter.append(by, value);
+        if (text != null)
+            filter.append("$text", new Document("$search", text));
         long totalRestaurants = new RestaurantDAO().getRestaurantsNumber(filter);
         return (long) Math.ceil((float) totalRestaurants / NUM_OF_RESTAURANT_ON_PAGE);
     }
+
+
+
 }

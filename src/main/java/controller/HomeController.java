@@ -20,19 +20,27 @@ public class HomeController implements IController {
         String url = "/?";
         String by= null;
         String value=null;
+        String text=null;
+
+        if (request.getParameter("text") != null) {
+            text = request.getParameter("text").trim();
+            url = url + "&text=" + text;
+        }
+
         if (request.getParameter("by") != null) {
             by = request.getParameter("by").trim();
             url = url + "&by=" + by;
         }
+
         if (request.getParameter("value") != null) {
             value = request.getParameter("value").trim();
             url = url + "&value=" + value;
         }
-        ctx.setVariable("url", url);  //For paging
 
-        long totalPages = new RestaurantService().getTotalPages(by, value);
+        ctx.setVariable("url", url);
+
+        long totalPages = new RestaurantService().getTotalPages(by, value,text);
         ctx.setVariable("totalPages", totalPages);
-
 
         int page = 1;
         if (request.getParameter("page") != null)
@@ -40,7 +48,9 @@ public class HomeController implements IController {
         ctx.setVariable("page", page);
 
 
-        List<Restaurant> list = new RestaurantService().searchRestaurants(by, value, page);
+
+
+        List<Restaurant> list = new RestaurantService().searchRestaurants(by, value, page,text);
 
         ctx.setVariable("list", list);
         List<String> cuisine = new RestaurantService().getCuisinesforHeader();

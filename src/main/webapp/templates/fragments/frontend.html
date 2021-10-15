@@ -17,13 +17,6 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Genres
                     </a>
-<!--                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" th:each="cui : ${cuisine}">-->
-<!--                        <li th:each="cui : ${cuisine}"><a class="dropdown-item" href="#"><span th:text="${cui}"></span></a></li>-->
-<!--                        <li>-->
-<!--                            <hr class="dropdown-divider">-->
-<!--                        </li>-->
-<!--                        <li><a class="dropdown-item" href="#">All</a></li>-->
-<!--                    </ul>-->
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown" th:with="cui=${cuisine}">
                         <li th:each="cui:${cuisine}"><a class="dropdown-item" th:href="@{/(by='cuisine',value=${cui})}"><span th:text="${cui}"></span></a></li>
                         <li>
@@ -33,8 +26,8 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" method="get" action="/">
+                <input class="form-control me-2" type="search" name="text" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>

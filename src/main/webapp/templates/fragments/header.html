@@ -8,17 +8,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#">Comment</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Top List
+                        Genres
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" th:each="cui : ${cuisines}">
-                        <li th:each="cui : ${cuisines}"><a class="dropdown-item" href="#"><span th:text="${cui}"></span></a></li>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" th:with="cui=${cuisine}">
+                        <li th:each="cui:${cuisine}"><a class="dropdown-item" th:href="@{/(by='cuisine',value=${cui})}"><span th:text="${cui}"></span></a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -26,8 +24,8 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" method="get" action="/">
+                <input class="form-control me-2" type="search" name="text" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>

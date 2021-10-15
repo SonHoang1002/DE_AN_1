@@ -14,5 +14,6 @@ public class Restaurant {
     private String restaurant_id;
     private String poster1;
     private String poster2;
+    private String rate;
 
 }
