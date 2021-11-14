@@ -43,21 +43,24 @@ public class RestaurantService {
             sort.append("restaurant_id", -1);
         }
 
+
         List<Restaurant> list = new RestaurantDAO().searchRestaurants(filter, sort, NUM_OF_RESTAURANT_ON_PAGE, (page - 1) * NUM_OF_RESTAURANT_ON_PAGE);
         if (list == null) {
             list = new ArrayList<>();
             //add some sample movies;
         }
+        System.out.println(list);
         return list;
     }
 
 
     public long getTotalPages(String by, String value, String text) {
         Document filter = new Document();
-        if (by != null && value != null)
-            filter.append(by, value);
         if (text != null)
             filter.append("$text", new Document("$search", text));
+        if (by != null && value != null)
+            filter.append(by, value);
+       System.out.println(filter);
         long totalRestaurants = new RestaurantDAO().getRestaurantsNumber(filter);
         return (long) Math.ceil((float) totalRestaurants / NUM_OF_RESTAURANT_ON_PAGE);
     }

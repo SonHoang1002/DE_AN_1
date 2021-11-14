@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="  crossorigin="anonymous"></script>
 
@@ -277,7 +278,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" id="click">Comment</a>
+                        <a class="nav-link active" aria-current="page" id="click" onclick="ShowCmt()">Comment</a>
                     </li>
 
 <!--                    <li class="nav-item dropdown">-->
@@ -303,65 +304,64 @@
 </header>
 
 
-<div id="wrapper">
-    <div id="title">
-        <h1>Comment Form</h1>
-    </div>
-    <div id="body">
-        <table>
-            <th>
-                <tr>Name:</tr><br>
-                <tr><input type="text"></tr><br>
-            </th>
-            <th>
-                <tr>Phone Number:</tr><br>
-                <tr><input type="text"></tr><br>
-            </th>
-            <th>
-                <tr>Content:</tr><br>
-                <tr><textarea style="width: 350px;" rows="5"></textarea></tr><br>
-            </th>
-        </table>
-    </div>
-    <div id="footer">
-        <button id="send">Send</button>
-        <button id="close"> Close</button>
-    </div>
-</div>
-<div id="wrapper1">
-    <div id="title">
-        <h1>Thank you</h1>
-    </div>
-    <div id="body">
-        <div class="penguin">
-            <div class="penguin-bottom">
-                <div class="right-hand"></div>
-                <div class="left-hand"></div>
-                <div class="right-feet"></div>
-                <div class="left-feet"></div>
-            </div>
-            <div class="penguin-top">
-                <div class="right-cheek"></div>
-                <div class="left-cheek"></div>
-                <div class="belly"></div>
-                <div class="right-eye">
-                    <div class="sparkle"></div>
-                </div>
-                <div class="left-eye">
-                    <div class="sparkle"></div>
-                </div>
-                <div class="blush-right"></div>
-                <div class="blush-left"></div>
-                <div class="beak-top"></div>
-                <div class="beak-bottom"></div>
-            </div>
-        </div>
-    </div>
-    <div id="footer">
-        <button id="btn_ql">quay lai</button>
-
-    </div>
-</div>
+<!--<div id="wrapper">-->
+<!--    <div id="title">-->
+<!--        <h1>Comment Form</h1>-->
+<!--    </div>-->
+<!--    <div id="body">-->
+<!--        <table>-->
+<!--            <th>-->
+<!--                <tr>Name:</tr><br>-->
+<!--                <tr><input type="text"></tr><br>-->
+<!--            </th>-->
+<!--            <th>-->
+<!--                <tr>Phone Number:</tr><br>-->
+<!--                <tr><input type="text"></tr><br>-->
+<!--            </th>-->
+<!--            <th>-->
+<!--                <tr>Content:</tr><br>-->
+<!--                <tr><textarea style="width: 350px;" rows="5"></textarea></tr><br>-->
+<!--            </th>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--    <div id="footer">-->
+<!--        <button id="send">Send</button>-->
+<!--        <button id="close"> Close</button>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div id="wrapper1">-->
+<!--    <div id="title">-->
+<!--        <h1>Thank you</h1>-->
+<!--    </div>-->
+<!--    <div id="body">-->
+<!--        <div class="penguin">-->
+<!--            <div class="penguin-bottom">-->
+<!--                <div class="right-hand"></div>-->
+<!--                <div class="left-hand"></div>-->
+<!--                <div class="right-feet"></div>-->
+<!--                <div class="left-feet"></div>-->
+<!--            </div>-->
+<!--            <div class="penguin-top">-->
+<!--                <div class="right-cheek"></div>-->
+<!--                <div class="left-cheek"></div>-->
+<!--                <div class="belly"></div>-->
+<!--                <div class="right-eye">-->
+<!--                    <div class="sparkle"></div>-->
+<!--                </div>-->
+<!--                <div class="left-eye">-->
+<!--                    <div class="sparkle"></div>-->
+<!--                </div>-->
+<!--                <div class="blush-right"></div>-->
+<!--                <div class="blush-left"></div>-->
+<!--                <div class="beak-top"></div>-->
+<!--                <div class="beak-bottom"></div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div id="footer">-->
+<!--        <button id="btn_ql">Come Back</button>-->
+<!--    </div>-->
+<!--</div>-->
 
 
 <main class="container">
@@ -382,9 +382,44 @@
 </div>
 
 
+<div id="'formCmt" >
+    <fieldset >
+        <legend>Comment</legend>
+        <div>
+            <table>
+                <tr>
+                    <th><label for="user">Name:</label></th>
+                    <th> <input id="user" type="text" placeholder="Name" style="width:394px;height: 30px;"><br></th>
+                </tr>
+                <tr>
+                    <th><label for="Number">Number Phone:</label> </th>
+                    <th><input id="Number" type="text" placeholder="Number Phone" style="width:394px;height:30px" ></th>
+                </tr>
+                <tr>
+                    <th><label for="cmt">Comment:</label> </th>
+                    <th><textarea id="cmt"  placeholder="Content of Comment" rows="10" cols="50"></textarea></th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th><button type="submit" onclick="Submit()">POST</button></th>
+                </tr>
+
+
+
+            </table>
+
+        </div><br><br><br><br>
+        <div id="root" style='font-size:10px;'>
+
+        </div>
+
+    </fieldset>
+
+
 <footer th:replace="~{fragments/frontend::footer}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </footer>
+
 <script>
     $("#click").click(function(){
         $("#wrapper").slideDown().css("display","flex")
@@ -399,6 +434,90 @@
     $("#close").click(function(){
         $("#wrapper").slideUp()
     })
+
+    function check(){
+        var arr = JSON.parse(localStorage.getItem("arr"))
+        if(arr==null ||arr==0||arr==undefined){
+            document.getElementById('root').innerText="chua co binh luan"
+        }
+    }
+    // function HideCmt() {
+    //     document.getElementById('form').style.display = "none";
+    // }
+    function ShowCmt() {
+        check()
+
+        document.getElementById('formCmt').style.display = "block";
+        var arr = JSON.parse(localStorage.getItem("arr"))
+        var content = ``
+        for (var i = 0; i < arr.length; i++) {
+            content += `
+                <div style='margin-left: 30px;display: flex;margin-top: 10px;margin-bottom:10px;'>
+                     <div  >
+                         <i class="fa-solid fa-user" style="margin-top:25px;margin-right: 20px;"></i>
+                     </div>
+                     <div style='border-radius: 10px;background-color:bisque'>
+                                 <h2 style='margin-left:10px;margin-right:10px;'>${arr[i].vuser}</h2>
+                                 <h3 style='margin-left:10px;margin-right:10px;'>${arr[i].vcmt}</h3>
+                     </div>
+                     <button style="width:40px;height:20px;margin-top: auto;margin-bottom: auto;margin-left: 30px;" onclick='DeleteCmt(event)'>Xoa</button>
+                </div><br>
+             `
+
+        }
+        document.getElementById('root').innerHTML = content
+
+    }
+
+    function Submit() {
+
+        var arr = localStorage.getItem("arr") ? JSON.parse(localStorage.getItem("arr")) : []
+        var vuser = document.getElementById('user').value
+        var vcmt = document.getElementById('cmt').value
+        var content = `
+            <div style='margin-left: 30px;display: flex;margin-top: 10px;margin-bottom:10px;'>
+                     <div  >
+                         <i class="fa-solid fa-user" style="margin-top:25px;margin-right: 20px;font-size: 30px;"></i>
+                     </div>
+                     <div style='border-radius: 10px;background-color:bisque'>
+                                 <h2 style='margin-left:10px;margin-right:10px;font-size:25px;'>${vuser}</h2>
+                                 <h3 style='margin-left:10px;margin-right:10px;font-size:17px;'>${vcmt}</h3>
+                     </div>
+                     <button style="width:40px;height:30px;line-height:30px;margin-top: auto;margin-bottom: auto;margin-left: 30px;font-size:10px; " onclick='DeleteCmt(event)'>Xoa</button>
+            </div><br>
+             `
+
+        if (localStorage.getItem("arr") == null ||localStorage.getItem("arr") == undefined) {
+            document.getElementById('root').innerHTML = ''
+        }
+        document.getElementById('root').innerHTML += content
+        arr.push({ vuser: vuser, vcmt: vcmt })
+        localStorage.setItem('arr', JSON.stringify(arr));
+
+        document.getElementById('user').value = ''
+        document.getElementById('cmt').value = ''
+    }
+
+    function DeleteCmt(event) {
+
+        var totalTag = event.target.parentElement;
+        var valueUser =totalTag.querySelector("h2").textContent;
+        console.log(valueUser)
+        var arr = JSON.parse(localStorage.getItem("arr"))
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i].vuser == valueUser) {
+                arr.splice(i, 1);
+                break;
+            }
+        }
+        localStorage.setItem('arr', JSON.stringify(arr))
+        totalTag.remove()
+        check()
+        if(arr==null ||arr==0||arr==undefined){
+            localStorage.removeItem('arr')
+        }
+    }
+
 
 </script>
 </body>

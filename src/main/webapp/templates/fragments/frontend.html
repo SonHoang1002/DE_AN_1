@@ -10,12 +10,10 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Genres
+                        Cuisine
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown" th:with="cui=${cuisine}">
                         <li th:each="cui:${cuisine}"><a class="dropdown-item" th:href="@{/(by='cuisine',value=${cui})}"><span th:text="${cui}"></span></a></li>

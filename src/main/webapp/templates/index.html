@@ -15,32 +15,20 @@
     <title >My Restaurant</title>
     <style>
         @-webkit-keyframes my {
-            0% { color: #F8CD0A; }
-            25% { color: #fff; }
-            50%{color:aqua}
-            75%{color:green}
-            100% { color: red; }
+            0% { color: white; }
+            100%{color:aqua}
         }
         @-moz-keyframes my {
-            0% { color: #F8CD0A; }
-            25% { color: #fff; }
-            50%{color:aqua}
-            75%{color:green}
-            100% { color: red; }
+            0% { color: white; }
+            100%{color:aqua}
         }
         @-o-keyframes my {
-            0% { color: #F8CD0A; }
-            25% { color: #fff; }
-            50%{color:aqua}
-            75%{color:green}
-            100% { color: red; }
+            0% { color: white; }
+            100%{color:aqua}
         }
         @keyframes my {
-            0% { color: #F8CD0A; }
-            25% { color: #fff; }
-            50%{color:aqua}
-            75%{color:green}
-            100% { color: red; }
+            0% { color: white; }
+            100%{color:aqua}
         }
         .test {
             font-size:24px;
@@ -59,7 +47,7 @@
 <marquee bgcolor="pink" direction="right" loop="infinite">WELCOME TO  VISIT MY PAGE </marquee>
 
 
-<header>
+<header class="container">
     <div th:replace="~{fragments/frontend::navbar}"></div>
     <div th:replace="~{fragments/frontend::carousel}"></div>
 </header>
@@ -102,9 +90,11 @@
     </nav>
 </main>
 
+<div class="container">
+    <footer  th:replace="~{fragments/frontend::footer}">
+    </footer>
+</div>
 
-<footer th:replace="~{fragments/frontend::footer}">
-</footer>
 
 
 
