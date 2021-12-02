@@ -49,7 +49,6 @@ public class RestaurantService {
             list = new ArrayList<>();
             //add some sample movies;
         }
-        System.out.println(list);
         return list;
     }
 
@@ -60,7 +59,6 @@ public class RestaurantService {
             filter.append("$text", new Document("$search", text));
         if (by != null && value != null)
             filter.append(by, value);
-       System.out.println(filter);
         long totalRestaurants = new RestaurantDAO().getRestaurantsNumber(filter);
         return (long) Math.ceil((float) totalRestaurants / NUM_OF_RESTAURANT_ON_PAGE);
     }

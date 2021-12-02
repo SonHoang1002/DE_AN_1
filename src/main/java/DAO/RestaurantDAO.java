@@ -69,7 +69,7 @@ public class RestaurantDAO extends AbsDAO{
 
     public long getRestaurantsNumber(Document filter) {
         MongoCollection<Document> restaurant = getDB().getCollection("restaurants");
-        System.out.println("abc:"+restaurant.countDocuments(filter));
+        System.out.println("so ban ghi:"+restaurant.countDocuments(filter));
         return restaurant.countDocuments(filter);
 
     }

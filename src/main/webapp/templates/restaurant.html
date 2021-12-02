@@ -13,6 +13,16 @@
 
     <title th:text="${restaurant.getName()}">Hello, world!</title>
 <style>
+    footer {
+        flex: 100%;
+        padding: 20px;
+        text-align: center;
+        background: #ddd;
+    }
+    .icon-footer{
+        font-size: 30px;
+        margin:8px;
+    }
     #wrapper{
         margin: auto;
         width: 500px;
@@ -72,76 +82,7 @@
         }
     }
 
-    .penguin {
-        position: relative;
-        margin: auto;
-        display: block;
-        margin-top: 5%;
-        width: var(--penguin-size, 300px);
-        height: var(--penguin-size, 300px);
-    }
 
-    .right-cheek {
-        top: 15%;
-        left: 35%;
-        background: var(--penguin-belly, white);
-        width: 60%;
-        height: 70%;
-        border-radius: 70% 70% 60% 60%;
-    }
-
-    .left-cheek {
-        top: 15%;
-        left: 5%;
-        background: var(--penguin-belly, white);
-        width: 60%;
-        height: 70%;
-        border-radius: 70% 70% 60% 60%;
-    }
-
-    .belly {
-        top: 60%;
-        left: 2.5%;
-        background: var(--penguin-belly, white);
-        width: 95%;
-        height: 100%;
-        border-radius: 120% 120% 100% 100%;
-    }
-
-    .penguin-top {
-        top: 10%;
-        left: 25%;
-        background: var(--penguin-skin, gray);
-        width: 50%;
-        height: 45%;
-        border-radius: 70% 70% 60% 60%;
-    }
-
-    .penguin-bottom {
-        top: 40%;
-        left: 23.5%;
-        background: var(--penguin-skin, gray);
-        width: 53%;
-        height: 45%;
-        border-radius: 70% 70% 100% 100%;
-    }
-
-    .right-hand {
-        top: 5%;
-        left: 25%;
-        background: var(--penguin-skin, rgb(189, 182, 182));
-        width: 30%;
-        height: 60%;
-        border-radius: 30% 30% 120% 30%;
-        transform: rotate(130deg);
-        z-index: -1;
-        animation-duration: 1.5s;
-        animation-name: wave;
-        animation-iteration-count: infinite;
-        transform-origin:0% 0%;
-        animation-timing-function: linear;
-        position: absolute;
-    }
 
     @keyframes wave {
         10% {
@@ -158,102 +99,7 @@
         }
     }
 
-    .left-hand {
-        top: 0%;
-        left: 75%;
-        background: var(--penguin-skin, gray);
-        width: 30%;
-        height: 60%;
-        border-radius: 30% 30% 30% 120%;
-        transform: rotate(-45deg);
-        z-index: -1;
-        position: absolute;
-    }
 
-    .right-feet {
-        top: 85%;
-        left: 60%;
-        background: var(--penguin-beak, orange);
-        width: 15%;
-        height: 30%;
-        border-radius: 50% 50% 50% 50%;
-        transform: rotate(-80deg);
-        z-index: -2222;
-    }
-
-    .left-feet {
-        top: 85%;
-        left: 25%;
-        background: var(--penguin-beak, orange);
-        width: 15%;
-        height: 30%;
-        border-radius: 50% 50% 50% 50%;
-        transform: rotate(80deg);
-        z-index: -2222;
-    }
-
-    .right-eye {
-        top: 45%;
-        left: 60%;
-        background: black;
-        width: 15%;
-        height: 17%;
-        border-radius: 50%;
-    }
-
-    .left-eye {
-        top: 45%;
-        left: 25%;
-        background: black;
-        width: 15%;
-        height: 17%;
-        border-radius: 50%;
-    }
-
-    .sparkle {
-        top: 25%;
-        left:-23%;
-        background: white;
-        width: 150%;
-        height: 100%;
-        border-radius: 50%;
-    }
-
-    .blush-right {
-        top: 65%;
-        left: 15%;
-        background: pink;
-        width: 15%;
-        height: 10%;
-        border-radius: 50%;
-    }
-
-    .blush-left {
-        top: 65%;
-        left: 70%;
-        background: pink;
-        width: 15%;
-        height: 10%;
-        border-radius: 50%;
-    }
-
-    .beak-top {
-        top: 60%;
-        left: 40%;
-        background: var(--penguin-beak, orange);
-        width: 20%;
-        height: 10%;
-        border-radius: 50%;
-    }
-
-    .beak-bottom {
-        top: 65%;
-        left: 42%;
-        background: var(--penguin-beak, orange);
-        width: 16%;
-        height: 10%;
-        border-radius: 50%;
-    }
 
     body {
         background:#c6faf1;
@@ -267,110 +113,38 @@
 <body>
 <marquee bgcolor="#99FF99" direction="right" loop="infinite">WELCOME TO VISIT MY PAGE </marquee>
 
-<header >
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark" >
-        <div class="container">
-            <a class="navbar-brand" href="#">Restaurant</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" id="click" onclick="ShowCmt()">Comment</a>
-                    </li>
-
-<!--                    <li class="nav-item dropdown">-->
-<!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                            Genres-->
-<!--                        </a>-->
-<!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" th:with="cui=${cuisine}">-->
-<!--                            <li th:each="cui:${cuisine}"><a class="dropdown-item" th:href="@{/(by='cuisine',value=${cui})}"><span th:text="${cui}"></span></a></li>-->
-<!--                            <li>-->
-<!--                                <hr class="dropdown-divider">-->
-<!--                            </li>-->
-<!--                            <li><a class="dropdown-item" href="#">All</a></li>-->
-<!--                        </ul>-->
+<!--<header >-->
+<!--    <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="display: flex" >-->
+<!--        <div >-->
+<!--            <a class="navbar-brand" href="#">Restaurant</a>-->
+<!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"-->
+<!--                    aria-label="Toggle navigation">-->
+<!--                <span class="navbar-toggler-icon"></span>-->
+<!--            </button>-->
+<!--            <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--                <ul class="navbar-nav me-auto mb-2 mb-md-0">-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link active" aria-current="page" id="click" onclick="ShowCmt()">Comment</a>-->
 <!--                    </li>-->
-                </ul>
-                <form class="d-flex" method="get" action="/">
-                    <input class="form-control me-2" type="search" name="text" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-</header>
 
-
-<!--<div id="wrapper">-->
-<!--    <div id="title">-->
-<!--        <h1>Comment Form</h1>-->
-<!--    </div>-->
-<!--    <div id="body">-->
-<!--        <table>-->
-<!--            <th>-->
-<!--                <tr>Name:</tr><br>-->
-<!--                <tr><input type="text"></tr><br>-->
-<!--            </th>-->
-<!--            <th>-->
-<!--                <tr>Phone Number:</tr><br>-->
-<!--                <tr><input type="text"></tr><br>-->
-<!--            </th>-->
-<!--            <th>-->
-<!--                <tr>Content:</tr><br>-->
-<!--                <tr><textarea style="width: 350px;" rows="5"></textarea></tr><br>-->
-<!--            </th>-->
-<!--        </table>-->
-<!--    </div>-->
-<!--    <div id="footer">-->
-<!--        <button id="send">Send</button>-->
-<!--        <button id="close"> Close</button>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<div id="wrapper1">-->
-<!--    <div id="title">-->
-<!--        <h1>Thank you</h1>-->
-<!--    </div>-->
-<!--    <div id="body">-->
-<!--        <div class="penguin">-->
-<!--            <div class="penguin-bottom">-->
-<!--                <div class="right-hand"></div>-->
-<!--                <div class="left-hand"></div>-->
-<!--                <div class="right-feet"></div>-->
-<!--                <div class="left-feet"></div>-->
-<!--            </div>-->
-<!--            <div class="penguin-top">-->
-<!--                <div class="right-cheek"></div>-->
-<!--                <div class="left-cheek"></div>-->
-<!--                <div class="belly"></div>-->
-<!--                <div class="right-eye">-->
-<!--                    <div class="sparkle"></div>-->
-<!--                </div>-->
-<!--                <div class="left-eye">-->
-<!--                    <div class="sparkle"></div>-->
-<!--                </div>-->
-<!--                <div class="blush-right"></div>-->
-<!--                <div class="blush-left"></div>-->
-<!--                <div class="beak-top"></div>-->
-<!--                <div class="beak-bottom"></div>-->
+<!--                </ul>-->
+<!--                <form class="d-flex" method="get" action="/">-->
+<!--                    <input class="form-control me-2" type="search" name="text" placeholder="Search" aria-label="Search">-->
+<!--                    <button class="btn btn-outline-success" type="submit">Search</button>-->
+<!--                </form>-->
 <!--            </div>-->
 <!--        </div>-->
-<!--    </div>-->
-<!--    <div id="footer">-->
-<!--        <button id="btn_ql">Come Back</button>-->
-<!--    </div>-->
-<!--</div>-->
-
-
-<main class="container">
+<!--    </nav>-->
+<!--</header>-->
+<header >
+    <div  th:replace="~{fragments/frontend::navbar}"></div>
+</header>
+<main class="container" >
     <div style="text-align: center;">
     RESTAURANT NAME: <h1 th:text="${restaurant.getName()}"></h1>
     RESTAURANT CUISINE:<h5 th:text="${restaurant.getCuisine()}"></h5>
     RESTAURANT BOROUGH: <h5 th:text="${restaurant.getBorough()}"></h5>
-    RATE: <h6 th:text="${restaurant.getRate()}"></h6>
-    GRADES: <h6 th:text="${restaurant.getGrades()}"></h6>
+    RATE: <h6 style="font-weight: 600" th:text="${restaurant.getRate()}"></h6>
     IMAGES:
     </div><br>
     <img th:src="${restaurant.getPoster1()}" style="height:500px;width: 600px">
@@ -460,7 +234,7 @@
                                  <h2 style='margin-left:10px;margin-right:10px;'>${arr[i].vuser}</h2>
                                  <h3 style='margin-left:10px;margin-right:10px;'>${arr[i].vcmt}</h3>
                      </div>
-                     <button style="width:40px;height:20px;margin-top: auto;margin-bottom: auto;margin-left: 30px;" onclick='DeleteCmt(event)'>Xoa</button>
+                     <button style="width:40px;height:20px;margin-top: auto;margin-bottom: auto;margin-left: 30px;text-align: center;background-color: #c6faf1" onclick='DeleteCmt(event)'>Delete</button>
                 </div><br>
              `
 
@@ -483,7 +257,7 @@
                                  <h2 style='margin-left:10px;margin-right:10px;font-size:25px;'>${vuser}</h2>
                                  <h3 style='margin-left:10px;margin-right:10px;font-size:17px;'>${vcmt}</h3>
                      </div>
-                     <button style="width:40px;height:30px;line-height:30px;margin-top: auto;margin-bottom: auto;margin-left: 30px;font-size:10px; " onclick='DeleteCmt(event)'>Xoa</button>
+                     <button style="width:40px;height:30px;line-height:30px;margin-top: auto;margin-bottom: auto;margin-left: 30px;font-size:10px;text-align: center ;background-color: #c6faf1;" onclick='DeleteCmt(event)'>Delete</button>
             </div><br>
              `
 
@@ -522,3 +296,62 @@
 </script>
 </body>
 </html>
+
+<!--<div id="wrapper">-->
+<!--    <div id="title">-->
+<!--        <h1>Comment Form</h1>-->
+<!--    </div>-->
+<!--    <div id="body">-->
+<!--        <table>-->
+<!--            <th>-->
+<!--                <tr>Name:</tr><br>-->
+<!--                <tr><input type="text"></tr><br>-->
+<!--            </th>-->
+<!--            <th>-->
+<!--                <tr>Phone Number:</tr><br>-->
+<!--                <tr><input type="text"></tr><br>-->
+<!--            </th>-->
+<!--            <th>-->
+<!--                <tr>Content:</tr><br>-->
+<!--                <tr><textarea style="width: 350px;" rows="5"></textarea></tr><br>-->
+<!--            </th>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--    <div id="footer">-->
+<!--        <button id="send">Send</button>-->
+<!--        <button id="close"> Close</button>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div id="wrapper1">-->
+<!--    <div id="title">-->
+<!--        <h1>Thank you</h1>-->
+<!--    </div>-->
+<!--    <div id="body">-->
+<!--        <div class="penguin">-->
+<!--            <div class="penguin-bottom">-->
+<!--                <div class="right-hand"></div>-->
+<!--                <div class="left-hand"></div>-->
+<!--                <div class="right-feet"></div>-->
+<!--                <div class="left-feet"></div>-->
+<!--            </div>-->
+<!--            <div class="penguin-top">-->
+<!--                <div class="right-cheek"></div>-->
+<!--                <div class="left-cheek"></div>-->
+<!--                <div class="belly"></div>-->
+<!--                <div class="right-eye">-->
+<!--                    <div class="sparkle"></div>-->
+<!--                </div>-->
+<!--                <div class="left-eye">-->
+<!--                    <div class="sparkle"></div>-->
+<!--                </div>-->
+<!--                <div class="blush-right"></div>-->
+<!--                <div class="blush-left"></div>-->
+<!--                <div class="beak-top"></div>-->
+<!--                <div class="beak-bottom"></div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div id="footer">-->
+<!--        <button id="btn_ql">Come Back</button>-->
+<!--    </div>-->
+<!--</div>-->
